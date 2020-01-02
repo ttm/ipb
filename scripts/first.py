@@ -1,4 +1,4 @@
-import networkx as x
+import networkx as x, pylab as p
 
 with open('../data/first.txt', 'r') as f:
     ppl = f.read().split('\n')[:-1]
@@ -20,10 +20,13 @@ for p in ppl:
     else:
         nodes['students'].append(name)
 
-
 g = x.DiGraph()
 
 for t in nodes['teachers']:
     g.add_edge(t, nodes['who'])
+
 for s in nodes['students']:
     g.add_edge(nodes['who'], s)
+
+x.draw_networkx(g)
+p.show()
